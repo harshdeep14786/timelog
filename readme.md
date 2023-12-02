@@ -16,3 +16,8 @@ GRANT ALL PRIVILEGES ON . TO 'kaurharshdeep'@'localhost' WITH GRANT OPTION;
 
 install mysql driver
 go get -u github.com/go-sql-driver/mysql
+Previously we have done the Toronto time assignment. Based on that assignment we have added one
+functionality to add the time log in the database. We have created the database name goAPI. The
+username for the database is harshdeep and password is Kaurharshdeep@123. We have inserted the
+time stamp in the database for the history log. After then we have created the docker repository with
+the name timelog .
