@@ -43,3 +43,28 @@ func saveTimeToDatabase(time time.Time) {
 		panic(err)
 	}
 }
+func getTimeLogsFromDatabase() []TimeLog {
+	db, err := sql.Open("mysql", "harshdeep:Kaurharshdeep@123@/GOAPI")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	rows, err := db.Query("SELECT timestamp FROM time_log ORDER BY timestamp DESC LIMIT 10")
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+
+	var timeLogs []TimeLog
+	for rows.Next() {
+		var timeLog TimeLog
+		err := rows.Scan(&timeLog.Timestamp)
+		if err != nil {
+			panic(err)
+		}
+		timeLogs = append(timeLogs, timeLog)
+	}
+
+	return timeLogs
+}
